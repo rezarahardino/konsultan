@@ -31,10 +31,10 @@ class Chat implements MessageComponentInterface
         } else {
             echo 'Failed to save message';
         }
-
+        var_dump($from);
         foreach ($this->clients as $client) {
             if ($client !== $from) {
-                $client->send($data['content']);
+                $client->send($data['chat']);
             }
         }
     }
@@ -55,28 +55,16 @@ class Chat implements MessageComponentInterface
 
     public function saveMessage($data)
     {
-        
-        $db = new \PDO("mysql:host=localhost;dbname=konsultan", "root", ""); 
-        
-        $stmt = $db->prepare("
-		INSERT INTO chatnew
-		(conversationId, userId, content, date)
-		VALUES
-		(?, ?, ?, ?)
-		");
+        date_default_timezone_set('Asia/Jakarta');
+        include './config/connection.php';
 
-        
-        if ($stmt) {
-            $stmt->bindParam(1, $data['id']);
-            $stmt->bindParam(2, $data['userId']);
-            $stmt->bindParam(3, $data['content']);
-            $stmt->bindParam(4, date('Y-m-d H:i:s'));
-            
-            $stmt->execute();
-            
-            return true;
-        }
+        $now = date('Y-m-d H:i:s');
+        $id = $data['id_live_chat'];
+        $chat = $data['chat'];
+        $sql = " INSERT INTO chat (id_live_chat, chat, created_date) VALUES ('$id', '$chat', '$now')";
 
-        return false;
+        mysql_query($sql);
+
+        return true;
     }
 }

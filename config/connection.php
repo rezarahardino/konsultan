@@ -1,7 +1,7 @@
 <?php 
 	$host 		= "127.0.0.1";
 	$username 	= "root";
-	$password 	= "";
+	$password 	= "root";
 	$databse 	= "konsultan";
 
 	$con = mysql_connect($host, $username, $password) or die("Database not found !!");

@@ -22,7 +22,8 @@
 			      <div class="caption"> 
 			        <p><?= $data['name'] ?> <button class="label label-success">on</button> </p>
 			        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Chat</button>
-			      </div>
+							<a class="btn btn-primary" href="?chat&id_live=<?= $data['id_live_chat']?>">Chat</a>
+						</div>
 			    </div>
 			</div>
 		<?php

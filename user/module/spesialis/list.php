@@ -25,6 +25,7 @@
 			        <p><?= $data['name'] ?> <button class="label label-success">on</button> </p>
 			        <p class="">
 						<a href="?konsultasi&id_doctor=<?= $data['id_user']?>">Konsultasi</a>
+						<a class="btn btn-primary" href="?chatWithDokter&id_doctor=<?= $data['id_user'] ?>">Chat</a>
 					</p>
 			      </div>
 			    </div>

@@ -7,6 +7,8 @@
 	<div class="container-fluid">
 		<div class="row">
 			<?php 
+				require '../vendor/autoload.php';
+
 				include 'components/header.php';
 			?>	
 		</div>
@@ -32,7 +34,11 @@
 					include 'module/consult/consult.php';
 				} elseif (isset($_GET['konsultasi'])) {
 					include 'module/consult/dummy.php';
-				} 
+				} elseif (isset($_GET['chat'])) {
+					include '../resources/views/chat2.php';
+				} elseif (isset($_GET['chatWithDokter'])) {
+					include '../resources/views/chat2.php';
+				}
 
 				else {
 					include 'components/content.php';
